@@ -61,6 +61,15 @@ jobs:
           sed -i 's/^DB_USERNAME=.*/DB_USERNAME=root/' .env
           sed -i 's/^DB_PASSWORD=.*/DB_PASSWORD=root/' .env
 
+      - name: Esperar la disponibilidad de MySQL
+        run: |
+          for i in $(seq 1 30); do
+            echo "Intentando conectar a MySQL..."
+            (echo > /dev/tcp/mysql/3306) >/dev/null 2>&1 && echo "MySQL listo" && exit 0
+            sleep 2
+          done
+          echo "No se pudo conectar a MySQL" && exit 1
+
       - name: Generate Application Key
         run: php artisan key:generate
 
