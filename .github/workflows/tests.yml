@@ -18,7 +18,7 @@ jobs:
       mysql:
         image: mysql:8
         env:
-          MYSQL_DATABASE: gob_test
+          MYSQL_DATABASE: messages_test
           MYSQL_USER: root
           MYSQL_PASSWORD: root
           MYSQL_ROOT_PASSWORD: root
@@ -57,7 +57,7 @@ jobs:
       - name: Ajustar variables de entorno
         run: |
           sed -i 's/^DB_HOST=.*/DB_HOST=mysql/' .env
-          sed -i 's/^DB_DATABASE=.*/DB_DATABASE=gob_test/' .env
+          sed -i 's/^DB_DATABASE=.*/DB_DATABASE=messages_test/' .env
           sed -i 's/^DB_USERNAME=.*/DB_USERNAME=root/' .env
           sed -i 's/^DB_PASSWORD=.*/DB_PASSWORD=root/' .env
 
