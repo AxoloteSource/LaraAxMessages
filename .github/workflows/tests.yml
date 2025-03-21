@@ -16,14 +16,13 @@ jobs:
 
     services:
       mysql:
-        image: mysql:8
+        image: mysql:8.0.20
         env:
-          MYSQL_DATABASE: messages_test
-          MYSQL_USER: root
-          MYSQL_PASSWORD: root
           MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: messages_test
         ports:
-          - 3306
+          - 33306:3306
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
 
     steps:
       - name: Checkout
@@ -53,22 +52,6 @@ jobs:
 
       - name: Copy Environment File
         run: cp .env.example .env
-
-      - name: Ajustar variables de entorno
-        run: |
-          sed -i 's/^DB_HOST=.*/DB_HOST=mysql/' .env
-          sed -i 's/^DB_DATABASE=.*/DB_DATABASE=messages_test/' .env
-          sed -i 's/^DB_USERNAME=.*/DB_USERNAME=root/' .env
-          sed -i 's/^DB_PASSWORD=.*/DB_PASSWORD=root/' .env
-
-      - name: Esperar la disponibilidad de MySQL
-        run: |
-          for i in $(seq 1 30); do
-            echo "Intentando conectar a MySQL..."
-            (echo > /dev/tcp/mysql/3306) >/dev/null 2>&1 && echo "MySQL listo" && exit 0
-            sleep 2
-          done
-          echo "No se pudo conectar a MySQL" && exit 1
 
       - name: Generate Application Key
         run: php artisan key:generate
