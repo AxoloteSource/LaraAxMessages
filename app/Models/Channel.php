@@ -21,7 +21,7 @@ class Channel extends Model
 
     public function providers(): BelongsToMany
     {
-        return $this->belongsToMany(Provider::class, 'provider_channels');
+        return $this->belongsToMany(Provider::class)->using(ProviderChannel::class);
     }
 
     public function providerChannel(): HasMany

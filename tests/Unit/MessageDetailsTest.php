@@ -4,7 +4,7 @@ namespace Tests\Unit;
 
 use App\Models\Message;
 use App\Models\MessageDetails;
-use App\Models\ProviderChannelField;
+use App\Models\ChannelProviderField;
 use Tests\TestCase;
 
 class MessageDetailsTest extends TestCase
@@ -25,12 +25,12 @@ class MessageDetailsTest extends TestCase
 
     public function test_it_belongs_to_a_provider_channel_field()
     {
-        $providerChannelField = ProviderChannelField::factory()->create();
+        $ChannelProviderField = ChannelProviderField::factory()->create();
 
-        $messageDetails = MessageDetails::factory()->create(['provider_channel_field_id' => $providerChannelField->id]);
+        $messageDetails = MessageDetails::factory()->create(['provider_channel_field_id' => $ChannelProviderField->id]);
 
-        $this->assertInstanceOf(ProviderChannelField::class, $messageDetails->providerChannelField);
-        $this->assertEquals($providerChannelField->id, $messageDetails->providerChannelField->id);
+        $this->assertInstanceOf(ChannelProviderField::class, $messageDetails->ChannelProviderField);
+        $this->assertEquals($ChannelProviderField->id, $messageDetails->ChannelProviderField->id);
     }
 
     public function test_it_belongs_to_a_message()

@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('message_histories', function (Blueprint $table) {
             $table->id();
             $table->foreignId('message_id')->constrained();
-            $table->foreignId('status_id')->constrained('message_statuses');
+            $table->foreignId('message_status_id')->constrained();
             $table->timestamps();
 
             $table->index(['created_at']);

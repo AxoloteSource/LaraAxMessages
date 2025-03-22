@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('messages', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('provider_channel_id')->constrained();
+            $table->foreignId('channel_provider_id')->constrained();
             $table->string('created_user_id', 36);
-            $table->foreignId('status_id')->constrained('message_statuses');
+            $table->foreignId('message_status_id')->constrained();
             $table->smallInteger('attempts');
             $table->timestamps();
             $table->softDeletes();

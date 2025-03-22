@@ -3,7 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Message;
-use App\Models\ProviderChannelField;
+use App\Models\ChannelProviderField;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -19,7 +19,7 @@ class MessageDetailsFactory extends Factory
     public function definition(): array
     {
         return [
-            'provider_channel_field_id' => ProviderChannelField::factory(),
+            'provider_channel_field_id' => ChannelProviderField::factory(),
             'message_id' => Message::factory(),
             'value' => fake()->sentence,
         ];

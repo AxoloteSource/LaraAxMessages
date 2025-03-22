@@ -19,7 +19,7 @@ class MessageFactory extends Factory
     public function definition(): array
     {
         return [
-            'provider_channel_id' => ProviderChannel::factory(),
+            'channel_provider_id' => ProviderChannel::factory(),
             'created_user_id' => fake()->randomNumber,
             'status_id' => MessageStatus::factory(),
             'attempts' => fake()->randomNumber,

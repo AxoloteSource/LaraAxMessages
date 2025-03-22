@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
             ProviderSeeder::class,
             MessageStatusSeeder::class,
             ProviderChannelSeeder::class,
-            ProviderChannelFieldSeeder::class,
+            ChannelProviderFieldSeeder::class,
             ProviderConfigSeeder::class,
         ]);
     }

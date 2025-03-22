@@ -11,9 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('provider_channel_fields', function (Blueprint $table) {
+        Schema::create('channel_provider_fields', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('provider_channel_id')->constrained();
+            $table->foreignId('channel_provider_id')->constrained();
             $table->foreignId('field_id')->constrained();
             $table->boolean('required')->default(false);
             $table->timestamps();
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('provider_channel_fields');
+        Schema::dropIfExists('channel_provider_fields');
     }
 };

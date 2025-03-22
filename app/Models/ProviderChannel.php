@@ -3,10 +3,10 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\Pivot;
 
-class ProviderChannel extends Model
+class ProviderChannel extends Pivot
 {
     /** @use HasFactory<\Database\Factories\ProviderChannelFactory> */
     use HasFactory;

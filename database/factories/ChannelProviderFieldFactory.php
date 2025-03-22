@@ -7,9 +7,9 @@ use App\Models\ProviderChannel;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\ProviderChannelField>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\ChannelProviderField>
  */
-class ProviderChannelFieldFactory extends Factory
+class ChannelProviderFieldFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -19,7 +19,7 @@ class ProviderChannelFieldFactory extends Factory
     public function definition(): array
     {
         return [
-            'provider_channel_id' => ProviderChannel::factory(),
+            'channel_provider_id' => ProviderChannel::factory(),
             'field_id' => Field::factory(),
             'required' => fake()->boolean,
         ];

@@ -1,0 +1,56 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasOneThrough;
+
+class ChannelProviderField extends Model
+{
+    /** @use HasFactory<\Database\Factories\ChannelProviderFieldFactory> */
+    use HasFactory;
+
+    public $timestamps = false;
+
+    protected $fillable = [
+        'channel_provider_id',
+        'field_id',
+        'required',
+    ];
+
+    public function providerChannel(): BelongsTo
+    {
+        return $this->belongsTo(ProviderChannel::class, 'channel_provider_id');
+    }
+
+    public function field(): BelongsTo
+    {
+        return $this->belongsTo(Field::class, 'field_id');
+    }
+
+    public function provider(): HasOneThrough
+    {
+        return $this->hasOneThrough(
+            Provider::class,          
+            ProviderChannel::class,   
+            'provider_id',           
+            'id',                  
+            'channel_provider_id',   
+            'id'                     
+        );
+    }
+
+    public function channel(): HasOneThrough
+    {
+        return $this->hasOneThrough(
+            Channel::class,
+            ProviderChannel::class,
+            'channel_id',          
+            'id',                  
+            'channel_provider_id',  
+            'id'                 
+        );
+    }
+}

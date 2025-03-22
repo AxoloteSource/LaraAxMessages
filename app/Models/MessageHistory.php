@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+
 
 class MessageHistory extends Model
 {
@@ -12,16 +14,16 @@ class MessageHistory extends Model
 
     protected $fillable = [
         'message_id',
-        'status_id',
+        'message_status_id',
     ];
 
-    public function message()
+    public function message(): BelongsTo
     {
         return $this->belongsTo(Message::class);
     }
 
-    public function status()
+    public function messageStatus(): BelongsTo
     {
-        return $this->belongsTo(MessageStatus::class, 'status_id');
+        return $this->belongsTo(MessageStatus::class);
     }
 }

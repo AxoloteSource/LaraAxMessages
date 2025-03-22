@@ -35,7 +35,7 @@ class ProviderTest extends TestCase
         $this->assertTrue($provider->channels->contains($channels[1]));
     }
 
-    public function test_it_has_many_provider_channels()
+    public function test_it_has_many_channel_provider()
     {
         $provider = Provider::factory()->create();
 

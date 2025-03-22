@@ -33,7 +33,7 @@ class ChannelTest extends TestCase
         $this->assertTrue($channel->providers->contains($providers[1]));
     }
 
-    public function test_it_has_many_provider_channels()
+    public function test_it_has_many_channel_provider()
     {
         $channel = Channel::factory()->create();
 

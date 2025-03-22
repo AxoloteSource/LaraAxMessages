@@ -14,14 +14,14 @@ class MessageDetails extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        'provider_channel_field_id',
+        'channel_provider_field_id',
         'message_id',
         'value',
     ];
 
-    public function providerChannelField(): BelongsTo
+    public function ChannelProviderField(): BelongsTo
     {
-        return $this->belongsTo(ProviderChannelField::class, 'provider_channel_field_id');
+        return $this->belongsTo(ChannelProviderField::class);
     }
 
     public function message(): BelongsTo

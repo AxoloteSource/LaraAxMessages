@@ -5,10 +5,10 @@ namespace Database\Seeders;
 use App\Enums\Channel;
 use App\Models\Field;
 use App\Models\ProviderChannel;
-use App\Models\ProviderChannelField;
+use App\Models\ChannelProviderField;
 use Illuminate\Database\Seeder;
 
-class ProviderChannelFieldSeeder extends Seeder
+class ChannelProviderFieldSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -41,8 +41,8 @@ class ProviderChannelFieldSeeder extends Seeder
             foreach ($fieldNamesByChannel[$providerChannel->channel_id] as $key => $value) {
                 $field = $fields->where('name', $key)->first();
 
-                ProviderChannelField::updateOrCreate([
-                    'provider_channel_id' => $providerChannel->id,
+                ChannelProviderField::updateOrCreate([
+                    'channel_provider_id' => $providerChannel->id,
                     'field_id' => $field->id,
                     'required' => $value,
                 ]);
