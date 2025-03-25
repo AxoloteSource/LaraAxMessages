@@ -13,20 +13,17 @@ return Application::configure(basePath: dirname(__DIR__))
         commands: __DIR__.'/../routes/console.php',
         health: '/up',
         then: function (Application $app) {
-            //
            Route::prefix('/api/v1')
                 ->middleware('api')
                 ->group(base_path('routes/api.php'));
         },
     )
     ->withMiddleware(function (Middleware $middleware) {
-        //
         $middleware->alias([
             'isAllow' => IsAllow::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
-        //
         $exceptions->render(function (ValidationException $e) {
             return Response::error(
                 null,
