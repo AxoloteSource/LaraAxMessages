@@ -80,7 +80,6 @@ class ChannelProviderFieldTest extends TestCase
         $channelProviderField = ChannelProviderField::factory()->create([
             'channel_provider_id' => $channelProvider->id,
         ]);
-        dd($channelProviderField->channel, $channelProvider->provider);
 
         $retrievedChannel = $channelProviderField->channel;
 

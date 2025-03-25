@@ -50,7 +50,6 @@ class ChannelProviderField extends Model
             'channel_id',
             'id',
             'channel_provider_id',
-            
             'id'
         );
     }

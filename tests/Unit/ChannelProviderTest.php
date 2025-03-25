@@ -3,8 +3,8 @@
 namespace Tests\Unit;
 
 use App\Models\Channel;
-use App\Models\Provider;
 use App\Models\ChannelProvider;
+use App\Models\Provider;
 use Tests\TestCase;
 
 class ChannelProviderTest extends TestCase
