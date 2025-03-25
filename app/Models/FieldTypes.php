@@ -16,7 +16,7 @@ class FieldTypes extends Model
     protected $fillable = [
         'name',
     ];
-    
+
     public function fields(): HasMany
     {
         return $this->hasMany(Field::class);

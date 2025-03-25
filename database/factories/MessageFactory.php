@@ -2,8 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\ChannelProvider;
 use App\Models\MessageStatus;
-use App\Models\ProviderChannel;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -19,10 +19,10 @@ class MessageFactory extends Factory
     public function definition(): array
     {
         return [
-            'channel_provider_id' => ProviderChannel::factory(),
+            'channel_provider_id' => ChannelProvider::factory(),
             'created_user_id' => fake()->randomNumber,
-            'status_id' => MessageStatus::factory(),
-            'attempts' => fake()->randomNumber,
+            'message_status_id' => MessageStatus::factory(),
+            'attempts' => fake()->numberBetween(0, 255),
         ];
     }
 }

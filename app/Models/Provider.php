@@ -21,11 +21,11 @@ class Provider extends Model
 
     public function channels(): BelongsToMany
     {
-        return $this->belongsToMany(Channel::class)->using(ProviderChannel::class);
+        return $this->belongsToMany(Channel::class)->using(ChannelProvider::class);
     }
 
-    public function providerChannel(): HasMany
+    public function channelProvider(): HasMany
     {
-        return $this->hasMany(ProviderChannel::class);
+        return $this->hasMany(ChannelProvider::class);
     }
 }

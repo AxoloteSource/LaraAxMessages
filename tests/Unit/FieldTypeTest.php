@@ -3,10 +3,13 @@
 namespace Tests\Unit;
 
 use App\Models\FieldTypes;
-use Tests\TestCase;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\TestCase;
 
 class FieldTypeTest extends TestCase
 {
+    use RefreshDatabase;
+
     /**
      * A basic unit test example.
      */

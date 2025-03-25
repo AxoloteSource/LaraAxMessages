@@ -6,12 +6,20 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\Pivot;
 
-class ProviderChannel extends Pivot
+class ChannelProvider extends Pivot
 {
-    /** @use HasFactory<\Database\Factories\ProviderChannelFactory> */
+    /** @use HasFactory<\Database\Factories\ChannelProviderFactory> */
     use HasFactory;
 
+    protected $primaryKey = 'id';
+
+    public $incrementing = true;
+
+    protected $keyType = 'int';
+
     public $timestamps = false;
+
+    protected $table = 'channel_providers';
 
     protected $fillable = [
         'provider_id',

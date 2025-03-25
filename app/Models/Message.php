@@ -20,9 +20,9 @@ class Message extends Model
         'attempts',
     ];
 
-    public function providerChannel(): BelongsTo
+    public function channelProvider(): BelongsTo
     {
-        return $this->belongsTo(ProviderChannel::class);
+        return $this->belongsTo(ChannelProvider::class);
     }
 
     public function messageStatus(): BelongsTo
@@ -31,26 +31,26 @@ class Message extends Model
     }
 
     public function provider(): HasOneThrough
-{
-    return $this->hasOneThrough(
-        Provider::class,         
-        ProviderChannel::class,   
-        'provider_id',            
-        'id',                    
-        'channel_provider_id',    
-        'id'                     
-    );
-}
+    {
+        return $this->hasOneThrough(
+            Provider::class,
+            ChannelProvider::class,
+            'provider_id',
+            'id',
+            'channel_provider_id',
+            'id'
+        );
+    }
 
-public function channel(): HasOneThrough
-{
-    return $this->hasOneThrough(
-        Channel::class,
-        ProviderChannel::class,
-        'channel_id',           
-        'id',                   
-        'channel_provider_id',  
-        'id'                   
-    );
-}
+    public function channel(): HasOneThrough
+    {
+        return $this->hasOneThrough(
+            Channel::class,
+            ChannelProvider::class,
+            'channel_id',
+            'id',
+            'channel_provider_id',
+            'id'
+        );
+    }
 }

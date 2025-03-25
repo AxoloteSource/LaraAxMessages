@@ -20,7 +20,7 @@ class MessageHistoryFactory extends Factory
     {
         return [
             'message_id' => Message::factory(),
-            'status_id' => MessageStatus::factory(),
+            'message_status_id' => MessageStatus::factory(),
         ];
     }
 }

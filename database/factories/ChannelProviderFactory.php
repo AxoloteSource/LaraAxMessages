@@ -7,9 +7,9 @@ use App\Models\Provider;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\ProviderChannel>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\ChannelProvider>
  */
-class ProviderChannelFactory extends Factory
+class ChannelProviderFactory extends Factory
 {
     /**
      * Define the model's default state.

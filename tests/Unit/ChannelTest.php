@@ -3,8 +3,8 @@
 namespace Tests\Unit;
 
 use App\Models\Channel;
+use App\Models\ChannelProvider;
 use App\Models\Provider;
-use App\Models\ProviderChannel;
 use Tests\TestCase;
 
 class ChannelTest extends TestCase
@@ -37,11 +37,11 @@ class ChannelTest extends TestCase
     {
         $channel = Channel::factory()->create();
 
-        $providerChannels[] = ProviderChannel::factory()->create(['channel_id' => $channel->id]);
-        $providerChannels[] = ProviderChannel::factory()->create(['channel_id' => $channel->id]);
+        $channelProviders[] = ChannelProvider::factory()->create(['channel_id' => $channel->id]);
+        $channelProviders[] = ChannelProvider::factory()->create(['channel_id' => $channel->id]);
 
-        $this->assertCount(count($providerChannels), $channel->providerChannel);
-        $this->assertTrue($channel->providerChannel->contains($providerChannels[0]));
-        $this->assertTrue($channel->providerChannel->contains($providerChannels[1]));
+        $this->assertCount(count($channelProviders), $channel->channelProvider);
+        $this->assertTrue($channel->channelProvider->contains($channelProviders[0]));
+        $this->assertTrue($channel->channelProvider->contains($channelProviders[1]));
     }
 }

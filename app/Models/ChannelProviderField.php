@@ -20,9 +20,9 @@ class ChannelProviderField extends Model
         'required',
     ];
 
-    public function providerChannel(): BelongsTo
+    public function channelProvider(): BelongsTo
     {
-        return $this->belongsTo(ProviderChannel::class, 'channel_provider_id');
+        return $this->belongsTo(ChannelProvider::class, 'channel_provider_id');
     }
 
     public function field(): BelongsTo
@@ -33,12 +33,12 @@ class ChannelProviderField extends Model
     public function provider(): HasOneThrough
     {
         return $this->hasOneThrough(
-            Provider::class,          
-            ProviderChannel::class,   
-            'provider_id',           
-            'id',                  
-            'channel_provider_id',   
-            'id'                     
+            Provider::class,
+            ChannelProvider::class,
+            'provider_id',
+            'id',
+            'channel_provider_id',
+            'id'
         );
     }
 
@@ -46,11 +46,12 @@ class ChannelProviderField extends Model
     {
         return $this->hasOneThrough(
             Channel::class,
-            ProviderChannel::class,
-            'channel_id',          
-            'id',                  
-            'channel_provider_id',  
-            'id'                 
+            ChannelProvider::class,
+            'channel_id',
+            'id',
+            'channel_provider_id',
+            
+            'id'
         );
     }
 }

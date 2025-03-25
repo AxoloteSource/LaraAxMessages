@@ -2,9 +2,9 @@
 
 namespace Tests\Unit;
 
+use App\Models\ChannelProviderField;
 use App\Models\Message;
 use App\Models\MessageDetails;
-use App\Models\ChannelProviderField;
 use Tests\TestCase;
 
 class MessageDetailsTest extends TestCase
@@ -17,20 +17,20 @@ class MessageDetailsTest extends TestCase
         $messageDetail = MessageDetails::factory()->create();
         $this->assertDatabaseHas('message_details', [
             'id' => $messageDetail->id,
-            'provider_channel_field_id' => $messageDetail->provider_channel_field_id,
+            'channel_provider_field_id' => $messageDetail->channel_provider_field_id,
             'message_id' => $messageDetail->message_id,
             'value' => $messageDetail->value,
         ]);
     }
 
-    public function test_it_belongs_to_a_provider_channel_field()
+    public function test_it_belongs_to_a_channel_provider_field()
     {
-        $ChannelProviderField = ChannelProviderField::factory()->create();
+        $channelProviderField = ChannelProviderField::factory()->create();
 
-        $messageDetails = MessageDetails::factory()->create(['provider_channel_field_id' => $ChannelProviderField->id]);
+        $messageDetails = MessageDetails::factory()->create(['channel_provider_field_id' => $channelProviderField->id]);
 
-        $this->assertInstanceOf(ChannelProviderField::class, $messageDetails->ChannelProviderField);
-        $this->assertEquals($ChannelProviderField->id, $messageDetails->ChannelProviderField->id);
+        $this->assertInstanceOf(ChannelProviderField::class, $messageDetails->channelProviderField);
+        $this->assertEquals($channelProviderField->id, $messageDetails->channelProviderField->id);
     }
 
     public function test_it_belongs_to_a_message()

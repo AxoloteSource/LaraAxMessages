@@ -17,8 +17,16 @@ class ProviderConfigTest extends TestCase
             'id' => $providerConfig->id,
             'provider_id' => $providerConfig->provider_id,
             'name' => $providerConfig->name,
-            'active' => $providerConfig->active,
-            'config' => json_encode($providerConfig->config),
+            'active' => (int) $providerConfig->active,
         ]);
+
+        $exists = ProviderConfig::where('id', $providerConfig->id)
+            ->whereJsonContains('config', [
+                'user' => $providerConfig->config['user'],
+                'credentials' => $providerConfig->config['credentials'],
+            ])
+            ->exists();
+
+        $this->assertTrue($exists);
     }
 }

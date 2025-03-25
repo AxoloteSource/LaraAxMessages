@@ -2,8 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\ChannelProvider;
 use App\Models\Field;
-use App\Models\ProviderChannel;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -19,7 +19,7 @@ class ChannelProviderFieldFactory extends Factory
     public function definition(): array
     {
         return [
-            'channel_provider_id' => ProviderChannel::factory(),
+            'channel_provider_id' => ChannelProvider::factory(),
             'field_id' => Field::factory(),
             'required' => fake()->boolean,
         ];

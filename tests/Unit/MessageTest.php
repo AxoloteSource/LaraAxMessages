@@ -2,9 +2,11 @@
 
 namespace Tests\Unit;
 
+use App\Models\Channel;
+use App\Models\ChannelProvider;
 use App\Models\Message;
 use App\Models\MessageStatus;
-use App\Models\ProviderChannel;
+use App\Models\Provider;
 use Tests\TestCase;
 
 class MessageTest extends TestCase
@@ -19,29 +21,29 @@ class MessageTest extends TestCase
             'id' => $message->id,
             'channel_provider_id' => $message->channel_provider_id,
             'created_user_id' => $message->created_user_id,
-            'status_id' => $message->status_id,
+            'message_status_id' => $message->message_status_id,
             'attempts' => $message->attempts,
         ]);
     }
 
-    public function test_it_belongs_to_a_provider_channel()
+    public function test_it_belongs_to_a_channel_provider()
     {
-        $providerChannel = ProviderChannel::factory()->create();
+        $channelProvider = ChannelProvider::factory()->create();
 
-        $message = Message::factory()->create(['channel_provider_id' => $providerChannel->id]);
+        $message = Message::factory()->create(['channel_provider_id' => $channelProvider->id]);
 
-        $this->assertInstanceOf(ProviderChannel::class, $message->providerChannel);
-        $this->assertEquals($providerChannel->id, $message->providerChannel->id);
+        $this->assertInstanceOf(ChannelProvider::class, $message->channelProvider);
+        $this->assertEquals($channelProvider->id, $message->channelProvider->id);
     }
 
     public function test_it_belongs_to_a_status()
     {
         $messageStatus = MessageStatus::factory()->create();
 
-        $message = Message::factory()->create(['status_id' => $messageStatus->id]);
+        $message = Message::factory()->create(['message_status_id' => $messageStatus->id]);
 
-        $this->assertInstanceOf(MessageStatus::class, $message->status);
-        $this->assertEquals($messageStatus->id, $message->status->id);
+        $this->assertInstanceOf(MessageStatus::class, $message->messageStatus);
+        $this->assertEquals($messageStatus->id, $message->messageStatus->id);
     }
 
     public function test_it_can_retrieve_provider_through_channel_provider()
@@ -71,7 +73,7 @@ class MessageTest extends TestCase
 
         $channel = Channel::factory()->create();
 
-        $channelProvider = ProviderChannel::factory()->create([
+        $channelProvider = ChannelProvider::factory()->create([
             'provider_id' => $provider->id,
             'channel_id' => $channel->id,
         ]);

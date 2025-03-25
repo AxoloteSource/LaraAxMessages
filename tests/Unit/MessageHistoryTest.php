@@ -18,7 +18,7 @@ class MessageHistoryTest extends TestCase
         $this->assertDatabaseHas('message_histories', [
             'id' => $messageHistory->id,
             'message_id' => $messageHistory->message_id,
-            'status_id' => $messageHistory->status_id,
+            'message_status_id' => $messageHistory->message_status_id,
         ]);
     }
 
@@ -26,10 +26,10 @@ class MessageHistoryTest extends TestCase
     {
         $messageStatus = MessageStatus::factory()->create();
 
-        $messageHistory = MessageHistory::factory()->create(['status_id' => $messageStatus->id]);
+        $messageHistory = MessageHistory::factory()->create(['message_status_id' => $messageStatus->id]);
 
-        $this->assertInstanceOf(MessageStatus::class, $messageHistory->status);
-        $this->assertEquals($messageStatus->id, $messageHistory->status->id);
+        $this->assertInstanceOf(MessageStatus::class, $messageHistory->messageStatus);
+        $this->assertEquals($messageStatus->id, $messageHistory->messageStatus->id);
     }
 
     public function test_it_belongs_to_a_message()

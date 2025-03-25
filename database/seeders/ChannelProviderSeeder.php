@@ -4,17 +4,17 @@ namespace Database\Seeders;
 
 use App\Enums\Channel;
 use App\Enums\Provider;
-use App\Models\ProviderChannel;
+use App\Models\ChannelProvider;
 use Illuminate\Database\Seeder;
 
-class ProviderChannelSeeder extends Seeder
+class ChannelProviderSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        ProviderChannel::upsert([
+        ChannelProvider::upsert([
             [
                 'id' => 1,
                 'provider_id' => Provider::META,
