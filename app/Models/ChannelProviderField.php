@@ -35,10 +35,10 @@ class ChannelProviderField extends Model
         return $this->hasOneThrough(
             Provider::class,
             ChannelProvider::class,
-            'provider_id',
+            'id',
             'id',
             'channel_provider_id',
-            'id'
+            'provider_id'
         );
     }
 
@@ -47,10 +47,10 @@ class ChannelProviderField extends Model
         return $this->hasOneThrough(
             Channel::class,
             ChannelProvider::class,
-            'channel_id',
+            'id',
             'id',
             'channel_provider_id',
-            'id'
+            'channel_id'
         );
     }
 }
