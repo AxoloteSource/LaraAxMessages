@@ -21,8 +21,7 @@ class ChannelProviderFieldSeeder extends Seeder
         $fieldNamesByChannel = [
             $whatsappChannelId => [
                 'template_name' => true,
-                'subject' => true,
-                'to' => true,
+                'phone_number' => true,
                 'params' => false,
             ],
             $emailChannelId => [

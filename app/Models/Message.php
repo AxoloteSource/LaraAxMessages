@@ -53,4 +53,14 @@ class Message extends Model
             'channel_id'
         );
     }
+
+    public function messageDetails()
+    {
+        return $this->hasMany(MessageDetails::class);
+    }
+
+    public function messageHistories()
+    {
+        return $this->hasMany(MessageHistory::class);
+    }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -52,5 +53,13 @@ class ChannelProviderField extends Model
             'channel_provider_id',
             'channel_id'
         );
+    }
+
+    public function getByChannelProviderId(
+        int $channelProviderId
+    ): Collection {
+        return $this->with('field')
+            ->where('channel_provider_id', $channelProviderId)
+            ->get();
     }
 }

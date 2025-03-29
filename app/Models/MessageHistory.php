@@ -14,6 +14,7 @@ class MessageHistory extends Model
     protected $fillable = [
         'message_id',
         'message_status_id',
+        'description',
     ];
 
     public function message(): BelongsTo
